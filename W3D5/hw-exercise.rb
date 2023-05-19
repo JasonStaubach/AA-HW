@@ -23,7 +23,20 @@ class Stack
         @queue = []
     end
 
+    def enqueue(el)
+        @queue << el
+    end
+
+    def dequeue
+        @queue.shift
+    end
+
 
   end
 
-  
+  q = Queue.new
+  q.enqueue("hi")
+  q.enqueue("bye")
+  p q
+  q.dequeue
+  p q
