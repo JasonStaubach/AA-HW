@@ -44,11 +44,23 @@ class Stack
     end
 
     def set(key,val)
-        @map << [key,val]
+        if get(key) == false
+            @map << [key,val]
+        end
     end
+
+    def get(key)
+        @map.each_with_index do |pair, i|
+            return i if pair[0] == key
+        end
+        false
+    end
+
 
   end
 
   m = Map.new
   m.set("dog","caly")
+  m.set("cat","stache")
+  p m.get("dog")
   p m
