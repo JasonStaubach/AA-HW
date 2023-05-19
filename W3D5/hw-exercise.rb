@@ -18,10 +18,12 @@ class Stack
     end
   end
 
-  s = Stack.new
-  s.push(["hi"])
-  s.push(["hello"])
-  s.push(["Im first"])
-  s.pop
-  p s.peek
-  p s
+  class Queue
+    def initialize
+        @queue = []
+    end
+
+
+  end
+
+  
