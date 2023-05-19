@@ -31,6 +31,10 @@ class Stack
         @queue.shift
     end
 
+    def peek
+        @queue[0]
+    end
+
 
   end
 
@@ -38,5 +42,7 @@ class Stack
   q.enqueue("hi")
   q.enqueue("bye")
   p q
+  p q.peek
   q.dequeue
   p q
+  p q.peek
