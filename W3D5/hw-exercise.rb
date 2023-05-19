@@ -10,7 +10,7 @@ class Stack
     end
   
     def pop
-      # removes one element from the stack
+      @stack.shift
     end
   
     def peek
@@ -21,4 +21,5 @@ class Stack
   s = Stack.new
   s.push(["hi"])
   s.push(["hello"])
+  s.pop
   p s
