@@ -38,11 +38,17 @@ class Stack
 
   end
 
-  q = Queue.new
-  q.enqueue("hi")
-  q.enqueue("bye")
-  p q
-  p q.peek
-  q.dequeue
-  p q
-  p q.peek
+  class Map
+    def initialize
+        @map = []
+    end
+
+    def set(key,val)
+        @map << [key,val]
+    end
+
+  end
+
+  m = Map.new
+  m.set("dog","caly")
+  p m
