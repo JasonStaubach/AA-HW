@@ -14,12 +14,14 @@ class Stack
     end
   
     def peek
-      # returns, but doesn't remove, the top element in the stack
+      @stack[0]
     end
   end
 
   s = Stack.new
   s.push(["hi"])
   s.push(["hello"])
+  s.push(["Im first"])
   s.pop
+  p s.peek
   p s
