@@ -56,6 +56,12 @@ class Stack
         false
     end
 
+    def delete(key)
+        @map.each_with_index do |pair, i|
+            @map.delete(pair) if pair[0] == key
+        end
+    end
+
 
   end
 
@@ -63,4 +69,5 @@ class Stack
   m.set("dog","caly")
   m.set("cat","stache")
   p m.get("dog")
+  m.delete("cat")
   p m
