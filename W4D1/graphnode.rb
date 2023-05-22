@@ -1,3 +1,5 @@
+require "byebug"
+
 class GraphNode
 
     attr_accessor :neighbors
@@ -13,9 +15,9 @@ class GraphNode
         queue = [starting_node]
         until queue.empty?
             checker = queue.shift
-            return checker if starting_node.value == target_value
-            visited.push(checker)
-            checker.neighbors.each {|ele| queue << ele unless visited.include?(ele)}
+            return checker if checker.value == target_value
+            visited.push(checker.value)
+            checker.neighbors.each {|ele| queue << ele unless visited.include?(ele.value)}
         end
         return false
 
@@ -33,7 +35,7 @@ a.neighbors = [b, c, e]
 c.neighbors = [b, d]
 e.neighbors = [a]
 f.neighbors = [e]
-
+# debugger
 p GraphNode.bfs(a, "b")
 
 
