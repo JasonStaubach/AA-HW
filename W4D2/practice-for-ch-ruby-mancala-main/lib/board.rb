@@ -30,22 +30,21 @@ class Board
 
   def make_move(start_pos, current_player_name)
     num_stones = @cups[start_pos].length
-    dump = []
-    distance = 1
-    until @cups[start_pos].empty?
-      if(current_player_name == @name1)
-        dump << @cups[(6 + distance) % 14].shift
-      else
-        dump << @cups[(14 + distance) % 14].shift
-      end
-      distance += 1
-    end
+    dump = @cups[start_pos]
+    @cups[start_pos] = []
 
     i = (start_pos + 1) % 14
+    # debugger
     until dump.empty?
-      @cups[i] << dump.shift
+      if(current_player_name == @name1)
+        @cups[i] << dump.shift unless i == 13
+      else
+        @cups[i] << dump.shift unless i == 6
+      end
       i = (i + 1) % 14
     end
+    render # board.render
+    next_turn(i)
   end
 
   def next_turn(ending_cup_idx)
