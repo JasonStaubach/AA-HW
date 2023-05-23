@@ -44,21 +44,20 @@ class Board
       i = (i + 1) % 14
     end
     render # board.render
-    debugger
+    i = (i - 1) % 14
     next_turn(i)
   end
 
   def next_turn(ending_cup_idx)
     # helper method to determine what #make_move returns
 
-    if(current_player_name == @name1)
-      return :stay if i == 6
-      return :stay unless @cups[i].empty?
+    if(ending_cup_idx == 6 )|| (ending_cup_idx == 13)
+      return :prompt
+    elsif @cups[ending_cup_idx].empty?
       return :switch
     else
-      return :stay if i == 13
-      return :stay unless @cups[i].empty?
-      return :switch
+      p "#{@cups[ending_cup_idx]} !!!!!"
+      return ending_cup_idx
     end
   end
 
@@ -71,8 +70,19 @@ class Board
   end
 
   def one_side_empty?
+    return true if (0..5).all? {|i| @cups[i].empty?}
+    return true if (7..12).all? {|i| @cups[i].empty?}
+    false
   end
 
   def winner
+    case @cups[6] <=> @cups[13]
+    when 0
+      return :draw
+    when -1
+      return @name2
+    when 1
+      return @name1
+    end
   end
 end
