@@ -7,11 +7,16 @@ class Board
     @cups = Array.new(14){[]}
     # debugger
     self.place_stones
+    @name1 = name1
+    @name2 = name2
   end
 
   def place_stones
     # helper method to #initialize every non-store cup with four stones each
     (0..5).each do |i|
+      @cups[i] += [:stone, :stone, :stone, :stone]
+    end
+    (7..12).each do |i|
       @cups[i] += [:stone, :stone, :stone, :stone]
     end
     @cups
@@ -28,19 +33,18 @@ class Board
     dump = []
     distance = 1
     until @cups[start_pos].empty?
-      if(current_player_name.prompt == 1)
-        4.times {dump << @cups[(6 + distance) % 14].shift}
+      if(current_player_name == @name1)
+        dump << @cups[(6 + distance) % 14].shift
       else
-        4.times {dump << @cups[(14 + distance) % 14].shift}
+        dump << @cups[(14 + distance) % 14].shift
       end
       distance += 1
     end
 
-    i = start_pos + 1
+    i = (start_pos + 1) % 14
     until dump.empty?
-      i == i % 14
       @cups[i] << dump.shift
-      i += 1
+      i = (i + 1) % 14
     end
   end
 

@@ -19,7 +19,7 @@ class GraphNode
             visited.push(checker.value)
             checker.neighbors.each {|ele| queue << ele unless visited.include?(ele.value)}
         end
-        return false
+        return nil
 
     end
 end
@@ -37,5 +37,6 @@ e.neighbors = [a]
 f.neighbors = [e]
 # debugger
 p GraphNode.bfs(a, "b")
+p GraphNode.bfs(a, "f")
 
 
