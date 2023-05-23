@@ -26,8 +26,14 @@ class Board
   def make_move(start_pos, current_player_name)
     num_stones = @cups[start_pos].length
     dump = []
+    distance = 1
     until @cups[start_pos].empty?
-      dump << @cups[start_pos].shift
+      if(current_player_name.prompt == 1)
+        4.times {dump << @cups[(6 + distance) % 14].shift}
+      else
+        4.times {dump << @cups[(14 + distance) % 14].shift}
+      end
+      distance += 1
     end
 
     i = start_pos + 1
