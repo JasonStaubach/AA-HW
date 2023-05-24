@@ -37,6 +37,7 @@ class Simon
     until checker.empty?
       puts "Make a guess"
       node = gets.chomp
+
       if node == checker[0]
         checker.shift
         puts "Correct!"
@@ -61,7 +62,7 @@ class Simon
     when 3
       @seq << "blue"
     end
-    @seq
+    #@seq #uncomment to cheat
   end
 
   def round_success_message
