@@ -1,3 +1,5 @@
+require 'byebug'
+
 class Simon
   COLORS = %w(red blue green yellow)
 
@@ -19,20 +21,24 @@ class Simon
   end
 
   def take_turn
+    # debugger
     self.show_sequence
     self.require_sequence
-    self.round_success_message unless @game_over
     @sequence_length += 1
+
+    self.round_success_message unless @game_over
     
   end
 
   def show_sequence
     self.add_random_color
     p @seq
+    sleep(2)
+    system("clear")
   end
 
   def require_sequence
-    checker = @seq
+    checker = @seq.dup
     node = ""
     until checker.empty?
       puts "Make a guess"
@@ -70,6 +76,7 @@ class Simon
   end
 
   def game_over_message
+    puts "Sorry, you lose at #{@sequence_length} times"
   end
 
   def reset_game
