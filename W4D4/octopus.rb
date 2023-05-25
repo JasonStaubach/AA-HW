@@ -2,6 +2,8 @@ FISH = ['fish', 'fiiish', 'fiiiiish', 'fiiiish', 'fffish', 'ffiiiiisshh', 'fsh',
  'fiiiissshhhhhh']
  tiles_array = ["up", "right-up", "right", "right-down", "down", "left-down", 
                "left",  "left-up"]
+tiles_hash = {"up" => 0, "right-up" => 1, "right" => 2, "right-down" => 3, "down" => 4, "left-down" => 5, 
+"left" => 6,  "left-up" => 7 }
 public 
 
  def sluggish_octopus
@@ -55,9 +57,15 @@ def slow_dance(dir, moves_arr = [])
     return "move not found"
 end
 
+def fast_dance(dir, move_hash = {})
+    move_hash[dir]
+end
+
 
 p sluggish_octopus
 p FISH.dominant_octopus
 p FISH.clever_octopus
 p slow_dance("up", tiles_array)
 p slow_dance("right-down", tiles_array)
+p fast_dance("up", tiles_hash)
+p fast_dance("right-down", tiles_hash)
