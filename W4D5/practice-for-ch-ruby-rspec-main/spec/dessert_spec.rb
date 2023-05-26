@@ -32,17 +32,23 @@ describe Dessert do
 
   describe "#mix!" do
     it "shuffles the ingredient array" do
-      expect(cookie.mix!.length).to eq(1)
+      ingredients = ["sugar","flour","chocolate"]
+      ingredients.each do |ing|
+        cookie.add_ingredient(ing)
+      end
+      cookie.mix!
+      expect(cookie.ingredients.length).to eq(3)
+    end
   end
 
   describe "#eat" do
-    it "subtracts an amount from the quantity"
+    it "subtracts an amount from the quantity" do
       cookie.eat(5)
       expect(cookie.quantity).to eq(15)
     end
 
     it "raises an error if the amount is greater than the quantity" do
-      expect(cookie.eat(30)).to raise_error("Can't eat that many!")
+      expect{cookie.eat(30)}.to raise_error("not enough left!")
     end
   end
 
