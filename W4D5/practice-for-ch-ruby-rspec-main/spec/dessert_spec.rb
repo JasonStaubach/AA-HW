@@ -6,7 +6,7 @@ Instructions: implement all of the pending specs (the `it` statements without bl
 =end
 
 describe Dessert do
-  let(:chef) { double("chef") }
+  let(:chef) { double("chef", name: "John Goodman") }
   let(:cookie) {Dessert.new("Chocolate",20,"John Goodman")}
 
   describe "#initialize" do
@@ -54,13 +54,13 @@ describe Dessert do
 
   describe "#serve" do
     it "contains the titleized version of the chef's name" do
-      expect(cookie).to receive(:titleize)
+      expect(cookie.serve).to eq("Chef John Goodman the Great Baker")
     end
   end
 
   describe "#make_more" do
     it "calls bake on the dessert's chef with the dessert passed in" do
-      expect(cookie).to receive(:bake)
+      expect(chef).to receive(:bake).with(cookie)
     end
   end
  end
