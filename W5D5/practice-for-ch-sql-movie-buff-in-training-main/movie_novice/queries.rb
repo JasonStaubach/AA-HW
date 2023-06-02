@@ -57,14 +57,14 @@ def alphabetized_actors
   # display the id and name of the second 10 actor names (i.e., #s 11-20)
   # when ordered from A-Z
   # hint: use 'order' and 'limit'
-  
+  Actor.select(:id, :name).order(:name).limit(10).offset(10)
 end
 
 def pulp_fiction_actors
   # practice using joins
   # display the id and name of all actors in the movie Pulp Fiction
   # hint: use 'select', 'joins', 'where'
-  
+  Actor.joins(:movies).where("title = 'Pulp Fiction'").select(:id, :name)
 end
 
 def uma_movies
@@ -72,5 +72,5 @@ def uma_movies
   # display the id, title, and year of movies Uma Thurman has acted in
   # order them by ascending year
   # hint: use 'select', 'joins', 'where', and 'order'
-  
+  Movie.joins(:actors).where(actors: {name:'Uma Thurman'} ).select(:id, :title, :yr).order(:yr)
 end
