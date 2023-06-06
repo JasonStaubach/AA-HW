@@ -109,7 +109,11 @@ class MetaCorgiSnacks
   end
 
   def method_missing(name, *args)
-    # Your code here
+    
+  def method_missing(method_name)
+    method_name = method_name.to_s
+    # if method_name.start_with?("say_")
+    #   text = method_name[("say_".length)..-1]
   end
   
   def self.define_snack(name)
