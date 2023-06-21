@@ -1,10 +1,13 @@
-function dinerBreakfast(add){
+function dinerBreakfast(){
     const order = ["waffles"];
-    return function(){
-        // order.push(add);
+    console.log(`I'd like ${order} please`)
+    return function(add) {
+        
+        order.push(add);
+
         process.stdout.write(`I'd like`);
         for(let i = 0; i < order.length; i++){
-            process.stdout.write(` ${order[i]}`);
+            process.stdout.write(` and ${order[i]}`);
         }
         console.log(` please`);
     }
@@ -12,6 +15,7 @@ function dinerBreakfast(add){
 
 let bfastOrder = dinerBreakfast();
 bfastOrder("chocolate chip pancakes");
+bfastOrder("hash browns");
 
 
 
