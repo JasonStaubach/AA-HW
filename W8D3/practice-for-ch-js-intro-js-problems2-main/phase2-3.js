@@ -20,19 +20,16 @@ function Elephant(name, height, tricks){
         randomT = (Math.floor(Math.random() * this.tricks.length));
         console.log(this.tricks[randomT]);
     }
-    // Elephant.prototype.paradeHelper = function(elephant){
-    //     console.log(`${elephant.name} is trotting by!`)
-    // }
+    Elephant.paradeHelper = function(elephant){
+        console.log(`${elephant.name} is trotting by!`)
+    }
     
-}
-
-function paradeHelper(elephant){
-    console.log(`${elephant.name} is trotting by!`)
 }
 
 function parade(herd, callback){
     herd.forEach( el => { callback(el) } );
-}
+};
+
 
 
 let larry = new Elephant('Larry', 60, ["stomping around", "shaking trunk", "shenanigans"]);
@@ -43,7 +40,10 @@ let micah = new Elephant("Micah", 143, ["trotting", "playing tic tac toe", "doin
 
 let herd = [larry, ellie, charlie, kate, micah];
 
-parade(herd, paradeHelper);
+
+
+parade(herd, Elephant.paradeHelper);
+
 // console.log(larry.height);
 // console.log(larry.trumpet());
 // console.log(Elephant.prototype);
