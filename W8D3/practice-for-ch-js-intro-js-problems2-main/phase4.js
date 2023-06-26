@@ -16,7 +16,9 @@ function dinerBreakfast(){
 let bfastOrder = dinerBreakfast();
 bfastOrder("chocolate chip pancakes");
 bfastOrder("hash browns");
+bfastOrder("to be a less shitty person")
 
+let x  = dinerBreakfast();
 
 
 // > let bfastOrder = dinerBreakfast();
